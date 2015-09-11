@@ -21,7 +21,7 @@ quickserve --port 3000 //launches http serve on localhost:3000
 Example output 
 ```Shell
 quickserve --port 3030
-2015/09/11 11:57:22 HTTP server listening on 127.0.0.1:3000
+2015/09/11 11:57:22 HTTP server listening on 127.0.0.1:3030
 2015/09/11 11:57:28 [GET] "/"
 2015/09/11 11:57:28 [GET] "/favicon.ico"
 ```
