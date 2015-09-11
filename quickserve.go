@@ -8,6 +8,13 @@ import (
 	"strconv"
 )
 
+func httpLog(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("[%s] %q\n", r.Method, r.URL)
+		handler.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 
 	app := cli.NewApp()
@@ -29,8 +36,8 @@ func main() {
 		fs := http.FileServer(http.Dir("/"))
 		http.Handle("/", fs)
 
-		log.Println("http server listening on 127.0.0.1:" + port)
-		http.ListenAndServe(":"+port, nil)
+		log.Println("HTTP server listening on localhost:" + port)
+		http.ListenAndServe(":"+port, httpLog(http.DefaultServeMux))
 	}
 
 	app.Run(os.Args)
