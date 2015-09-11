@@ -10,6 +10,7 @@ go install
 ```
 #Usage
 
+cd into root directory and run
 ```Shell
 quickserve --port 3000 //launches http serve on localhost:3000
 ```
